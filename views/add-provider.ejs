@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sağlayıcıdan görevleri al</title>
+</head>
+<body>
+    <form action="/add-provider" method="post">
+        <label for="provider">Sağlayıcı URL</label>
+        <input type="text" name="providerUrl">
+        <select name="provider">
+            <option value="EN">EN</option>
+            <option value="TR">TR</option>
+        </select>
+        <button type="submit">Ekle</button>
+    </form>
+    <p>Sağlayıcı url'si girerek veritabanına görevleri yükleyebilirsiniz.</p>
+    <p>EN: http://www.mocky.io/v2/5d47f235330000623fa3ebf7</p>
+    <p>TR: http://www.mocky.io/v2/5d47f24c330000623fa3ebfa</p>
+    <footer>
+        <a href="/">Ana sayfa</a>
+        <a href="/add-provider">Sağlayıcı</a>
+    </footer>
+</body>
+</html>

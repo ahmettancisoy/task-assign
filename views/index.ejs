@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İş Takip</title>
+    <style>
+        body {
+            color: #bdc1c6;
+            background-color: rgb(29, 29, 29);
+        }
+        .demo {
+            border:1px solid #C0C0C0;
+            border-collapse:collapse;
+            padding:5px;
+        }
+        .demo th {
+            border:1px solid #C0C0C0;
+            padding:5px;
+            background:#2c2c2c;
+        }
+        .demo td {
+            border:1px solid #C0C0C0;
+            padding:5px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <table class="demo">
+        <caption><%= result %></caption>
+        <thead>
+        <tr>
+            <th>Geliştirici</th>
+            <th>İş veren</th>
+            <th>İş</th>
+            <th>Zorluk</th>
+            <th>Tahmini bitiş</th>
+        </tr>
+        </thead>
+        <tbody>
+            <% tasks.forEach(element => { %>
+                <tr>
+                    <td><%= element.dev %></td>
+                    <td><%= element.provider %></td>
+                    <td><%= element.name %></td>
+                    <td><%= element.level %></td>
+                    <td><%= element.estimated_duration %></td>
+                </tr>
+            <% }); %>
+        <tbody>
+    </table>
+    <footer>
+        <a href="/">Ana sayfa</a>
+        <a href="/add-provider">Sağlayıcı</a>
+    </footer>
+</body>
+</html>
