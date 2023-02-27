@@ -1,27 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sağlayıcıdan görevleri al</title>
-</head>
-<body>
-    <form action="/add-provider" method="post">
-        <label for="provider">Sağlayıcı URL</label>
-        <input type="text" name="providerUrl">
-        <select name="provider">
-            <option value="EN">EN</option>
-            <option value="TR">TR</option>
-        </select>
-        <button type="submit">Ekle</button>
+<%- include("partials/header") %>
+    <form action="/add-provider" method="post" onsubmit="onFormSubmit();">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="providerUrl">Sağlayıcı URL</label>
+                <input type="text" class="form-control" id="providerUrl" name="providerUrl">
+            </div>
+            <div class="col-md-2">
+                <label for="provider">Sağlayıcı Tipi</label>
+                <select name="provider" class="form-select" id="provider">
+                    <option value="EN">EN</option>
+                    <option value="TR">TR</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-12 mt-3 mb-3">
+            <button type="submit" class="btn btn-primary" id="submit">Ekle</button>
+        </div>
     </form>
-    <p>Sağlayıcı url'si girerek veritabanına görevleri yükleyebilirsiniz.</p>
-    <p>EN: http://www.mocky.io/v2/5d47f235330000623fa3ebf7</p>
-    <p>TR: http://www.mocky.io/v2/5d47f24c330000623fa3ebfa</p>
-    <footer>
-        <a href="/">Ana sayfa</a>
-        <a href="/add-provider">Sağlayıcı</a>
-    </footer>
-</body>
-</html>
+    <p>
+        Sağlayıcı url'si girerek veritabanına görevleri yükleyebilirsiniz.
+        Hesaplama eklenen veriye göre yapılacaktır.
+        Error handling olmadığından doğru url girilmelidir.
+    </p>
+    <p><strong>EN:</strong> http://www.mocky.io/v2/5d47f235330000623fa3ebf7</p>
+    <p><strong>TR:</strong> http://www.mocky.io/v2/5d47f24c330000623fa3ebfa</p>
+    <script>
+        function onFormSubmit() {
+            const btn = document.querySelector("#submit");
+            btn.disabled = true;
+            btn.innerText = "Yükleniyor..."
+        }
+    </script>
+<%- include("partials/footer") %>

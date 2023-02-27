@@ -4,13 +4,12 @@ const getData = require("../services/getProvidersData");
 
 const insertTask = async (req, res) => {
   const { provider, providerUrl } = req.body;
+  const trimmedUrl = providerUrl.trim();
   if (provider === "EN") {
-    getData(await providerEN(providerUrl));
+    getData(await providerEN(trimmedUrl), res);
   } else if (provider === "TR") {
-    getData(await providerTR(providerUrl));
+    getData(await providerTR(trimmedUrl), res);
   }
-
-  res.status(204).send();
 };
 
 module.exports = { insertTask };
