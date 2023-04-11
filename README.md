@@ -23,7 +23,7 @@ Assuming that developers work 45 hours a week, a user interface should be prepar
 
 1. Clone the repository.
 ```
-git clone https://github.com/vaycomolokko/task-assign.git
+git clone https://github.com/ahmettancisoy/task-assign.git
 ```
 2. Install dependencies
 ```
