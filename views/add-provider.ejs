@@ -2,11 +2,11 @@
     <form action="/add-provider" method="post" onsubmit="onFormSubmit();">
         <div class="row">
             <div class="col-md-4">
-                <label for="providerUrl">Sağlayıcı URL</label>
+                <label for="providerUrl">Provider URL</label>
                 <input type="text" class="form-control" id="providerUrl" name="providerUrl">
             </div>
             <div class="col-md-2">
-                <label for="provider">Sağlayıcı Tipi</label>
+                <label for="provider">Provider Type</label>
                 <select name="provider" class="form-select" id="provider">
                     <option value="EN">EN</option>
                     <option value="TR">TR</option>
@@ -14,13 +14,12 @@
             </div>
         </div>
         <div class="col-12 mt-3 mb-3">
-            <button type="submit" class="btn btn-primary" id="submit">Ekle</button>
+            <button type="submit" class="btn btn-primary" id="submit">Add</button>
         </div>
     </form>
     <p>
-        Sağlayıcı url'si girerek veritabanına görevleri yükleyebilirsiniz.
-        Hesaplama eklenen veriye göre yapılacaktır.
-        Error handling olmadığından doğru url girilmelidir.
+        Enter provider URL to insert tasks into database.
+        Note that error handling not included.
     </p>
     <p><strong>EN:</strong> http://www.mocky.io/v2/5d47f235330000623fa3ebf7</p>
     <p><strong>TR:</strong> http://www.mocky.io/v2/5d47f24c330000623fa3ebfa</p>

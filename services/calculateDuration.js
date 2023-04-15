@@ -1,12 +1,13 @@
 const Tasks = require("../models/Tasks");
 const Devs = require("../models/Developer");
 
-const calculateDistribution = async () => {
+const calculateDuration = async () => {
   const devs = await Devs.find({}).lean().exec();
   const tasks = await Tasks.find({}).lean().exec();
 
   let weeks = 0;
   let hours = 0;
+  let totalDuration = 0;
 
   const unassignedTasks = [];
 
@@ -34,18 +35,16 @@ const calculateDistribution = async () => {
 
   console.log(`Unassigned tasks: ${unassignedTasks.length}`);
 
-  devs.sort((a, b) => {
-    return b.totalDuration - a.totalDuration;
+  devs.forEach((dev) => {
+    totalDuration += dev.totalDuration;
   });
 
-  const longestDuration = devs[0].totalDuration;
+  weeks = Math.floor(totalDuration / 45);
+  hours = totalDuration % 45;
 
-  weeks = Math.floor(longestDuration / 45);
-  hours = longestDuration % 45;
-
-  result = `İŞLERİN TAMAMLANMA SÜRESİ: ${weeks} HAFTA + ${hours} SAAT`;
+  result = `COMPLETION OF TASKS: ${weeks} WEEKS + ${hours} HOURS`;
 
   return { tasks, result };
 };
 
-module.exports = calculateDistribution;
+module.exports = calculateDuration;

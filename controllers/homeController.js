@@ -1,11 +1,20 @@
-const calculate = require("../services/calculateDistribution");
+const calculate = require("../services/calculateDuration");
+const distribution = require("../services/weeklyDistribution");
 
 const getData = async (req, res) => {
   const { tasks, result } = await calculate();
+  const distributedTasks = [];
+  const devs = [...new Set(tasks.map((t) => t.dev))];
+  devs.forEach(async (dev) => {
+    const filteredTasksByDev = tasks.filter((t) => t.dev === dev);
+    const getDistribution = distribution(filteredTasksByDev);
+    distributedTasks.push({ dev: dev, data: getDistribution });
+  });
 
-  console.log(result);
+  console.log(distributedTasks);
+
   res.render("index", {
-    tasks: tasks,
+    data: distributedTasks.flat(),
     result: result,
   });
 };
